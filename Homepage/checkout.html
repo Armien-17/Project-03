@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Checkout</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/Styles/style.css"> 
+</head>
+<body>
+
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="home.html">
+                <img src="/Images/logo-no-background.png" alt="ReflectaHome Logo" style="height: 40px;">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="home.html#products"><i class="fas fa-store"></i> Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="wishlist.html"><i class="fas fa-heart"></i> Wishlist</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="orders.html"><i class="fas fa-truck"></i> Orders</a>
+                    </li>
+                   <!-- Combined Sign Up/Sign In Link -->
+                    <li class="nav-item">
+                         <a class="nav-link" href="signup-in.html"><i class="fas fa-user"></i> Sign Up / Sign In</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="checkout-container">
+        <h1>Secure Checkout</h1>
+        
+        <!-- Step 1: Customer Information -->
+        <section class="customer-info">
+            <h2>Customer Information</h2>
+            <form id="checkout-form">
+                <label for="name">Full Name & Surname</label>
+                <input type="text" id="name" required>
+                <div class="error-message" id="name-error">Please fill in your full name.</div>
+
+                <label for="email">Email Address</label>
+                <input type="email" id="email" required>
+                <div class="error-message" id="email-error">Please fill in your email address and ensure it contains '@'.</div>
+
+                <label for="address">Shipping Address</label>
+                <input type="text" id="address" required>
+                <div class="error-message" id="address-error">Please fill in your shipping address.</div>
+
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" required>
+                <div class="error-message" id="phone-error">Please fill in your phone number. It must be 10 digits and start with '0'.</div>
+            </form>
+        </section>
+
+        <!-- Step 2: Payment Method -->
+        <section class="payment-method">
+            <h2>Select Payment Method</h2>
+            <div class="payment-options">
+                <input type="radio" name="payment-method" value="credit-card" id="credit-card" checked>
+                <label for="credit-card">Credit or Debit Card</label>
+                <input type="radio" name="payment-method" value="paypal" id="paypal">
+                <label for="paypal">PayPal</label>
+            </div>
+        </section>
+
+        <!-- Step 3: Credit Card Details (Visible only if Credit Card is selected) -->
+        <section class="credit-card-info" id="credit-card-info">
+            <h3>Credit or Debit Card Details</h3>
+            <label for="card-number">Card Number</label>
+            <input type="text" id="card-number" placeholder="1234567891011121" required>
+            <div class="error-message" id="card-number-error">Please fill in a valid card number.</div>
+
+            <label for="expiry-date">Expiration Date</label>
+            <input type="text" id="expiry-date" placeholder="MM/YY" required>
+            <div class="error-message" id="expiry-date-error">Please fill in the expiration date.</div>
+
+            <label for="cvv">CVV</label>
+            <input type="text" id="cvv" placeholder="123" required>
+            <div class="error-message" id="cvv-error">Please fill in the CVV.</div>
+        </section>
+
+        <!-- Step 4: PayPal Payment (Visible only if PayPal is selected) -->
+        <section class="paypal-info" id="paypal-info" style="display: none;">
+            <h3>Pay with PayPal</h3>
+            <div id="paypal-button-container"></div>
+        </section>
+
+        <!-- Step 5: Order Summary and Submit -->
+        <section class="order-summary">
+            <h2>Order Summary</h2>
+            <p>Total: R100.00</p>
+            <button type="button" id="submit-btn" class="submit-btn">Complete Order</button>
+        </section>
+
+        <!-- Success message container -->
+        <div id="success-message" class="success-message">
+            Payment successful!
+        </div>
+    </div>
+
+     <!-- Footer Section -->
+     <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <h3>ReflectaHome</h3>
+                <p>Transform your space with our beautiful mirrors.</p><br><br>
+                <p>Powered by</p>
+                
+                <!-- Life Choices link -->
+                <a class="navbar-brand" href="https://lifechoices.co.za/">
+                    <img src="/Images/lifechoices.png" alt="Sponsor Logo" style="height: 30px; margin-top: 5px;">
+                </a>
+            
+                <!-- Life Choices Academy link -->
+                <a class="navbar-brand" href="https://lifechoicesacademy.com/">
+                    <img src="/images/lca-2.webp" alt="Sponsor Logo" style="height: 30px; margin-top: 5px;">
+                </a>
+            </div>
+    
+            <div class="footer-center">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="/QuickLinks/about.html">About Us</a></li>
+                    <li><a href="/QuickLinks/Report abuse.html">Report abuse</a></li>
+                    <li><a href="/QuickLinks/Return Policy.html">Return Policy</a></li>
+                    <li><a href="/QuickLinks/Shipping & Payment.html">Shipping & Payment Info</a></li>
+                    
+                </ul>
+            </div>
+    
+            <div class="footer-right">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#" class="social-icon">Facebook</a>
+                    <a href="#" class="social-icon">Instagram</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 ReflectaHome. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- External JavaScript file -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
+
+    <script>
+        // Handle Payment Method Selection
+        const creditCardRadio = document.getElementById('credit-card');
+        const paypalRadio = document.getElementById('paypal');
+        const creditCardInfo = document.getElementById('credit-card-info');
+        const paypalInfo = document.getElementById('paypal-info');
+        
+        creditCardRadio.addEventListener('change', () => {
+            if (creditCardRadio.checked) {
+                creditCardInfo.style.display = 'block';
+                paypalInfo.style.display = 'none';
+            }
+        });
+
+        paypalRadio.addEventListener('change', () => {
+            if (paypalRadio.checked) {
+                creditCardInfo.style.display = 'none';
+                paypalInfo.style.display = 'block';
+            }
+        });
+
+        // Handle form submission
+        document.getElementById('submit-btn').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent form from submitting the traditional way
+
+            // Clear previous errors
+            const errorMessages = document.querySelectorAll('.error-message');
+            const inputFields = document.querySelectorAll('input');
+            inputFields.forEach((input) => {
+                input.classList.remove('input-error');
+            });
+            errorMessages.forEach((error) => {
+                error.style.display = 'none';
+            });
+
+            // Check if all required fields are filled
+            let allFieldsFilled = true;
+            const requiredFields = document.querySelectorAll('#checkout-form input[required]');
+            requiredFields.forEach((field) => {
+                if (!field.value) {
+                    allFieldsFilled = false;
+                    const errorMessage = document.getElementById(`${field.id}-error`);
+                    errorMessage.style.display = 'block'; // Show error message
+                    field.classList.add('input-error'); // Highlight the input field
+                }
+            });
+
+            // Validate email address to contain "@" symbol
+            const email = document.getElementById('email').value;
+            if (!email.includes('@')) {
+                allFieldsFilled = false;
+                document.getElementById('email-error').style.display = 'block';
+                document.getElementById('email').classList.add('input-error');
+            }
+
+            // Validate phone number to be 10 digits and start with '0'
+            const phone = document.getElementById('phone').value;
+            const phoneRegex = /^0\d{9}$/; // Must start with '0' and be 10 digits
+            if (!phoneRegex.test(phone)) {
+                allFieldsFilled = false;
+                document.getElementById('phone-error').style.display = 'block';
+                document.getElementById('phone').classList.add('input-error');
+            }
+
+            // Check Credit Card fields
+            if (creditCardRadio.checked) {
+                const cardNumber = document.getElementById('card-number').value;
+                const expiryDate = document.getElementById('expiry-date').value;
+                const cvv = document.getElementById('cvv').value;
+                const cardNumberRegex = /^[0-9]{16}$/; // Basic validation for a 16-digit card number
+                const expiryDateRegex = /^(0[1-9]|1[0-2])\/([0-9]{2})$/; // MM/YY format
+                const cvvRegex = /^[0-9]{3}$/; // 3-digit CVV
+
+                // Check for validity of credit card fields
+                if (!cardNumber || !cardNumberRegex.test(cardNumber)) {
+                    allFieldsFilled = false;
+                    document.getElementById('card-number-error').style.display = 'block';
+                    document.getElementById('card-number').classList.add('input-error');
+                }
+                if (!expiryDate || !expiryDateRegex.test(expiryDate)) {
+                    allFieldsFilled = false;
+                    document.getElementById('expiry-date-error').style.display = 'block';
+                    document.getElementById('expiry-date').classList.add('input-error');
+                }
+                if (!cvv || !cvvRegex.test(cvv)) {
+                    allFieldsFilled = false;
+                    document.getElementById('cvv-error').style.display = 'block';
+                    document.getElementById('cvv').classList.add('input-error');
+                }
+            }
+
+            // If any required fields are missing, stop the process
+            if (!allFieldsFilled) {
+                return;
+            }
+
+            // Get the selected payment method
+            const paymentMethod = document.querySelector('input[name="payment-method"]:checked').value;
+            if (paymentMethod === 'credit-card') {
+                // Simulate success for Credit Card
+                document.getElementById('success-message').style.display = 'block';  // Show the success message
+            } else if (paymentMethod === 'paypal') {
+                // If PayPal is selected, trigger the PayPal payment flow
+                paypal.Buttons().render('#paypal-button-container');
+            }
+        });
+
+        // PayPal Button Integration
+        paypal.Buttons({
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '100.00'
+                        }
+                    }]
+                });
+            },
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    document.getElementById('success-message').style.display = 'block'; // Show the success message on payment success
+                });
+            }
+        }).render('#paypal-button-container');
+    </script>
+
+</body>
+</html>
