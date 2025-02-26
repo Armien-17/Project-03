@@ -65,7 +65,11 @@
     background-color: #ff4a37;
 }
 
+<<<<<<< HEAD
 /* Product Section Styling
+=======
+/* Product Section Styling */
+>>>>>>> 4f203f1927edfbe71f413eba3664a57eb039b721
 .product-section {
     padding: 50px 20px;
     text-align: center;
@@ -122,7 +126,11 @@
 
 .product-btn:hover {
     background-color: #555;
+<<<<<<< HEAD
 } */
+=======
+}
+>>>>>>> 4f203f1927edfbe71f413eba3664a57eb039b721
 
 /* Footer Styling */
 .footer {
@@ -682,11 +690,14 @@ button:hover {
             transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition on hover */
             height: 400px; /* Fixed height for all cards */
         }
+<<<<<<< HEAD
 
         .card .buttons {
             position: relative;  /* Ensure buttons are positioned relative */
             z-index: 2;  /* Place buttons on top of the card overlay */
         }
+=======
+>>>>>>> 4f203f1927edfbe71f413eba3664a57eb039b721
         
         .card:hover {
             transform: scale(1.05); /* Slightly enlarges the card on hover */
@@ -712,7 +723,11 @@ button:hover {
             align-items: center;
             opacity: 0; /* Initially hidden */
             transition: opacity 0.3s ease; /* Smooth fade-in on hover */
+<<<<<<< HEAD
             z-index: 1; /* Lower the overlay's z-index */
+=======
+            z-index: 0; /* Lower the overlay's z-index */
+>>>>>>> 4f203f1927edfbe71f413eba3664a57eb039b721
         }
         
         .card:hover .card-overlay {
@@ -775,6 +790,7 @@ button:hover {
         grid-template-columns: 1fr; /* 1 column for mobile */
     }
 }
+<<<<<<< HEAD
 
 html {
     scroll-behavior: smooth;
@@ -783,3 +799,5 @@ html {
 
 
 
+=======
+>>>>>>> 4f203f1927edfbe71f413eba3664a57eb039b721
